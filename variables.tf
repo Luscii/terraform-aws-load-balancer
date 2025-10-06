@@ -89,6 +89,7 @@ variable "enable_access_logs" {
     Whether to enable writing access logs to the configured S3 bucket is enabled.
     Only when `create_access_logs_bucket` is true, or `access_logs_bucket_name` is set.
   EOT
+  default     = false
 }
 
 variable "access_logs_bucket_config" {

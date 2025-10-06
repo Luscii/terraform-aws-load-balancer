@@ -60,7 +60,7 @@ module "this" {
 | <a name="input_access_logs_prefix"></a> [access\_logs\_prefix](#input\_access\_logs\_prefix) | Prefix for the access logs in the S3 bucket. | `string` | `null` | no |
 | <a name="input_context"></a> [context](#input\_context) | Single object for setting entire context at once.<br/>See description of individual variables for details.<br/>Leave string and numeric variables as `null` to use default value.<br/>Individual variable settings (non-null) override settings in context object,<br/>except for attributes, tags, and additional\_tag\_map, which are merged. | `any` | <pre>{<br/>  "additional_tag_map": {},<br/>  "attributes": [],<br/>  "delimiter": null,<br/>  "descriptor_formats": {},<br/>  "enabled": true,<br/>  "environment": null,<br/>  "id_length_limit": null,<br/>  "label_key_case": null,<br/>  "label_order": [],<br/>  "label_value_case": null,<br/>  "labels_as_tags": [<br/>    "unset"<br/>  ],<br/>  "name": null,<br/>  "namespace": null,<br/>  "regex_replace_chars": null,<br/>  "stage": null,<br/>  "tags": {},<br/>  "tenant": null<br/>}</pre> | no |
 | <a name="input_create_access_logs_bucket"></a> [create\_access\_logs\_bucket](#input\_create\_access\_logs\_bucket) | Whether to create an S3 bucket for access logs. | `bool` | `true` | no |
-| <a name="input_enable_access_logs"></a> [enable\_access\_logs](#input\_enable\_access\_logs) | Whether to enable writing access logs to the configured S3 bucket is enabled.<br/>    Only when `create_access_logs_bucket` is true, or `access_logs_bucket_name` is set. | `bool` | n/a | yes |
+| <a name="input_enable_access_logs"></a> [enable\_access\_logs](#input\_enable\_access\_logs) | Whether to enable writing access logs to the configured S3 bucket is enabled.<br/>    Only when `create_access_logs_bucket` is true, or `access_logs_bucket_name` is set. | `bool` | `false` | no |
 | <a name="input_enable_deletion_protection"></a> [enable\_deletion\_protection](#input\_enable\_deletion\_protection) | Whether to enable deletion protection for the load balancer. | `bool` | `false` | no |
 | <a name="input_idle_timeout"></a> [idle\_timeout](#input\_idle\_timeout) | Idle timeout for the load balancer in seconds. | `number` | `60` | no |
 | <a name="input_internal"></a> [internal](#input\_internal) | Whether the load balancer is internal or internet-facing. | `bool` | `false` | no |
@@ -76,4 +76,9 @@ module "this" {
 | <a name="output_access_logs_bucket_arn"></a> [access\_logs\_bucket\_arn](#output\_access\_logs\_bucket\_arn) | ARN of the S3 bucket for access logs |
 | <a name="output_access_logs_bucket_id"></a> [access\_logs\_bucket\_id](#output\_access\_logs\_bucket\_id) | ID of the S3 bucket for access logs |
 | <a name="output_access_logs_bucket_policy"></a> [access\_logs\_bucket\_policy](#output\_access\_logs\_bucket\_policy) | IAM policy document for the access logs bucket |
+| <a name="output_arn"></a> [arn](#output\_arn) | ARN of the load balancer |
+| <a name="output_arn_suffix"></a> [arn\_suffix](#output\_arn\_suffix) | ARN suffix of the load balancer |
+| <a name="output_dns_name"></a> [dns\_name](#output\_dns\_name) | DNS name of the load balancer |
+| <a name="output_id"></a> [id](#output\_id) | ID of the load balancer |
+| <a name="output_zone_id"></a> [zone\_id](#output\_zone\_id) | Zone ID of the load balancer |
 <!-- END_TF_DOCS -->

@@ -1,4 +1,5 @@
 resource "aws_lb" "this" {
+  #checkov:skip=CKV_AWS_91:Access logging is not required, but configurable and recommended
   name     = module.label.id
   internal = var.internal
 
