@@ -1,5 +1,6 @@
 resource "aws_lb" "this" {
   #checkov:skip=CKV_AWS_91:Access logging is not required, but configurable and recommended
+  #checkov:skip=CKV2_AWS_28:For now we're not implementing WAF, this has to be done in the future (TODO)
   name     = module.label.id
   internal = var.internal
 
