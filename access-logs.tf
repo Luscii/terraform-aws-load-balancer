@@ -17,10 +17,13 @@ resource "aws_s3_bucket" "access_logs" {
   # checkov:skip=CKV2_AWS_28:For now the access logs bucket doesn't need KMS encryption (TODO)
   # checkov:skip=CKV2_AWS_62:Event notifications are not required for the access logs bucket
   # checkov:skip=CKV_AWS_18:S3 bucket doesn't need Access logs for now
-  # checkov:skip=CKV_AWS_18 Public Access block is enabled, but can't be handled by checkov atm
+  # checkov:skip=CKV_AWS_18: Public Access block is enabled, but can't be handled by checkov atm
+  # checkov:skip=CKV2_AWS_6: Public Access block is enabled, but can't be handled by checkov atm
   # checkov:skip=CKV2_AWS_61:Lifecycle configuration is not (yet) implemented for the access logs bucket
   # checkov:skip=CKV_AWS_144:Cross-region replication is not required for the access logs bucket
   # checkov:skip=CKV_AWS_21:Versioning is disabled by default
+  # checkov:skip=CKV_AWS_145:KMS is not required now
+
   count = local.create_access_logs_bucket ? 1 : 0
 
   bucket = module.access_logs_label.id
