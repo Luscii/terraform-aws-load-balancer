@@ -5,3 +5,6 @@ module "label" {
   context = var.context
   name    = var.name
 }
+
+data "aws_region" "current" {}
+data "aws_caller_identity" "current" {}
