@@ -68,6 +68,7 @@ module "this" {
 | <a name="input_redirect_http_to_https"></a> [redirect\_http\_to\_https](#input\_redirect\_http\_to\_https) | Whether to redirect HTTP traffic to HTTPS. | `bool` | `false` | no |
 | <a name="input_security_groups_ids"></a> [security\_groups\_ids](#input\_security\_groups\_ids) | List of security group IDs to associate with the load balancer. | `list(string)` | n/a | yes |
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | List of subnet IDs to associate with the load balancer. | `list(string)` | n/a | yes |
+| <a name="input_use_legacy_access_log_principal"></a> [use\_legacy\_access\_log\_principal](#input\_use\_legacy\_access\_log\_principal) | Use the legacy access log principal for the region. See: https://docs.aws.amazon.com/elasticloadbalancing/latest/application/enable-access-logging.html | `bool` | `false` | no |
 
 ### Outputs
 

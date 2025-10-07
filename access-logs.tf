@@ -64,6 +64,10 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "access_logs" {
   }
 }
 
+locals {
+  access_log_delivery_principal_identifier = var.use_legacy_access_log_principal ? lookup(local.access_log_principals, data.aws_region.current.name, "logdelivery.elasticloadbalancing.amazonaws.com") : "logdelivery.elasticloadbalancing.amazonaws.com"
+}
+
 data "aws_iam_policy_document" "access_logs" {
   statement {
     sid     = "${data.aws_region.current.name}-ELBS3AccessLogs"
@@ -71,10 +75,8 @@ data "aws_iam_policy_document" "access_logs" {
     actions = ["s3:PutObject"]
 
     principals {
-      type = lookup(local.access_log_principals, data.aws_region.current.name, "Service")
-      identifiers = [
-        lookup(local.access_log_principals, data.aws_region.current.name, "logdelivery.elasticloadbalancing.amazonaws.com")
-      ]
+      type        = local.access_log_delivery_principal_identifier == "logdelivery.elasticloadbalancing.amazonaws.com" ? "Service" : "AWS"
+      identifiers = [local.access_log_delivery_principal_identifier]
     }
 
     resources = [

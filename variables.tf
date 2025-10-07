@@ -131,3 +131,9 @@ variable "redirect_http_to_https" {
   description = "Whether to redirect HTTP traffic to HTTPS."
   default     = false
 }
+
+variable "use_legacy_access_log_principal" {
+  type        = bool
+  description = "Use the legacy access log principal for the region. See: https://docs.aws.amazon.com/elasticloadbalancing/latest/application/enable-access-logging.html"
+  default     = false
+}
