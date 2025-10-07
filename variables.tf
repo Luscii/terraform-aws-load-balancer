@@ -129,7 +129,7 @@ variable "access_logs_prefix" {
 variable "redirect_http_to_https" {
   type        = bool
   description = "Whether to redirect HTTP traffic to HTTPS."
-  default     = false
+  default     = true
 }
 
 variable "use_legacy_access_log_principal" {
