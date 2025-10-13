@@ -4,6 +4,8 @@ module "label" {
 
   context = var.context
   name    = var.name
+  attributes = var.attributes
+  id_length_limit = 32
 }
 
 data "aws_region" "current" {}
