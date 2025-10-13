@@ -50,6 +50,12 @@ variable "name" {
   description = "Name of the resource to be labeled. This is used to generate the label key and value."
 }
 
+variable "attributes" {
+  type        = list(string)
+  description = "Additional attributes (e.g. `workers` or `cluster`) to add to `id`, in the order they appear in the list. New attributes are appended to the end of the list. The elements of the list are joined by the `delimiter` and treated as a single ID element."
+  default     = []
+}
+
 variable "internal" {
   type        = bool
   description = "Whether the load balancer is internal or internet-facing."
