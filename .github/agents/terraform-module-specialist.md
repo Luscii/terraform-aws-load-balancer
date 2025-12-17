@@ -162,11 +162,10 @@ module "ecs_service" {
 | `README.md` | Module documentation | ❌ documentation-specialist |
 | `examples/` | Runnable example configurations | ❌ examples-specialist |
 
+**Note:** Variable and output descriptions are added by documentation-specialist agent.
+
 **Additional Optional Files (code only):**
 - `locals.tf` - Complex local values
-- `{resource-type}.tf` - Resource-specific files (e.g., `security-group.tf`, `iam-role-policies.tf`)
-
-**Note:** Variable and output descriptions are added by documentation-specialist agent.
 - `{resource-type}.tf` - Resource-specific files (e.g., `security-group.tf`, `iam-role-policies.tf`)
 - `examples/` - Separate runnable examples
 - `tests/` - Terraform test files (`.tftest.tf`)
@@ -216,6 +215,9 @@ variable "context" {
     id_length_limit     = number
     label_key_case      = string
     label_value_case    = string
+    descriptor_formats  = map(string)
+    labels_as_tags      = list(string)
+  })
   # Description added by documentation-specialist
   default = {
     enabled             = true
@@ -334,8 +336,6 @@ output "service_arn" {
   value = aws_ecs_service.this.arn
 }
 ```
-}
-```
 
 **Output Standards:**
 - Alphabetical order
@@ -351,8 +351,7 @@ output "service_arn" {
 - Use descriptive names reflecting their purpose
 - Examples: `primary`, `secondary`, `internal`, `external`
 
-**Module References:**
-- Your Responsibility:** NONE - Documentation is handled by documentation-specialist agent.
+**Your Responsibility:** NONE - Documentation is handled by documentation-specialist agent.
 
 **What documentation-specialist creates:**
 - README.md with module name, description, examples, terraform-docs markers
@@ -404,14 +403,6 @@ output "service_arn" {
 1. **Instruction Compliance:**
    - [ ] Followed all rules in relevant `.github/instructions/*.instructions.md` files
    - [ ] CloudPosse label module integrated correctly (v0.25.0)
-   - [ ] All required files present
-
-2. **Code Quality:**
-   - [ ] 2-space indentation consistent
-   - [ ] `=` signs aligned in consecutive arguments
-   - [ ] Variables alphabetical (`context` first, then `name`)
-   - [ ] Outputs alphabetical w`.github/instructions/terraform.instructions.md`
-   - [ ] CloudPosse label module integrated correctly (v0.25.0)
    - [ ] All required code files present (main.tf, variables.tf, outputs.tf, versions.tf)
 
 2. **Code Quality:**
@@ -439,6 +430,8 @@ output "service_arn" {
    - [ ] Version constraints specified
 
 **Note:** Documentation and examples will be verified by their respective specialist agents.
+
+```bash
 # Validate configuration
 terraform validate
 
@@ -514,14 +507,6 @@ When asked to use or find a module:
 Before considering work complete:
 
 - [ ] Read relevant `.github/instructions/*.instructions.md` files
-- [ ] All required files present (`main.tf`, `variables.tf`, `outputs.tf`, `versions.tf`, `README.md`)
-- [ ] CloudPosse label module integrated (v0.25.0)
-- [ ] Luscii modules used where available (GitHub source)
-- [ ] Official HashiCorp providers used
-- [ ] Code properly formatted (2-space indentation, aligned `=`)
-- [ ] Variables: `context` first, `name` second, rest alphabetical
-- [ ] Outputs: alphabetical with descriptions
-- [ ] Descr`.github/instructions/terraform.instructions.md`
 - [ ] All required code files present (main.tf, variables.tf, outputs.tf, versions.tf)
 - [ ] CloudPosse label module integrated (v0.25.0)
 - [ ] Luscii modules used where available (GitHub source)
@@ -537,12 +522,11 @@ Before considering work complete:
 - [ ] `terraform validate` passes
 - [ ] `checkov` security scan completed
 
-**Note:** Documentation and examples are handled by specialist agents and should not be included in your checklist.Registry source for Luscii modules (GitHub only)
-6. **Always** include `context` and `name` variables
-7. **Always** follow alphabetical ordering for variables/outputs
-8. **Never** hardcode sensitive values
-9. **Always** validate inputs with validation blocks
-10. **Always** run formatting, validationterraform.instructions.md` before working with code
+**Note:** Documentation and examples are handled by specialist agents and should not be included in your checklist.
+
+## 🎯 Key Principles
+
+1. **Always** read `.github/instructions/terraform.instructions.md` before working with code
 2. **Always** use CloudPosse label module v0.25.0 for naming/tagging
 3. **Always** prioritize Luscii modules (GitHub source) over third-party
 4. **Always** use official HashiCorp providers
@@ -555,7 +539,7 @@ Before considering work complete:
 11. **Never** create README.md or documentation (handled by documentation-specialist)
 12. **Never** create examples/ directory (handled by examples-specialist)
 13. **Focus exclusively** on Terraform code (.tf files)
+
 ---
 
-**Remember:** Your primary goal is to generate production-ready Terraform modules that follow Luscii's standards, use Luscii modules where available, integrate CloudPosse label patterns, and include comprehensive documentation. Always consult the instruction files and prioritize code quality, security, and maintainability.
-exclusive role is to generate production-ready **Terraform code** (.tf files) that follows Luscii's standards, uses Luscii modules where available, and integrates CloudPosse label patterns. Documentation and examples are handled by specialist agents. Focus on code quality, security, and proper resource implementation
+**Remember:** Your exclusive role is to generate production-ready **Terraform code** (.tf files) that follows Luscii's standards, uses Luscii modules where available, and integrates CloudPosse label patterns. Documentation and examples are handled by specialist agents. Focus on code quality, security, and proper resource implementation.
