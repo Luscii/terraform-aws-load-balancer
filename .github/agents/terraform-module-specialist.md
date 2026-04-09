@@ -162,14 +162,11 @@ module "ecs_service" {
 | `README.md` | Module documentation | ❌ documentation-specialist |
 | `examples/` | Runnable example configurations | ❌ examples-specialist |
 
+**Note:** Variable and output descriptions are added by documentation-specialist agent.
+
 **Additional Optional Files (code only):**
 - `locals.tf` - Complex local values
 - `{resource-type}.tf` - Resource-specific files (e.g., `security-group.tf`, `iam-role-policies.tf`)
-
-**Note:** Variable and output descriptions are added by documentation-specialist agent.
-- `{resource-type}.tf` - Resource-specific files (e.g., `security-group.tf`, `iam-role-policies.tf`)
-- `examples/` - Separate runnable examples
-- `tests/` - Terraform test files (`.tftest.tf`)
 
 ### 3. CloudPosse Label Integration
 
@@ -216,6 +213,9 @@ variable "context" {
     id_length_limit     = number
     label_key_case      = string
     label_value_case    = string
+    descriptor_formats  = map(string)
+    labels_as_tags      = list(string)
+  })
   # Description added by documentation-specialist
   default = {
     enabled             = true
@@ -334,13 +334,6 @@ output "service_arn" {
   value = aws_ecs_service.this.arn
 }
 ```
-}
-```
-
-**Output Standards:**
-- Alphabetical order
-- Clear description explaining usage
-- Export all important resource attributes
 
 #### C. Resource Naming Conventions
 
@@ -352,7 +345,8 @@ output "service_arn" {
 - Examples: `primary`, `secondary`, `internal`, `external`
 
 **Module References:**
-- Your Responsibility:** NONE - Documentation is handled by documentation-specialist agent.
+
+**Your Responsibility:** NONE - Documentation is handled by documentation-specialist agent.
 
 **What documentation-specialist creates:**
 - README.md with module name, description, examples, terraform-docs markers
@@ -410,14 +404,6 @@ output "service_arn" {
    - [ ] 2-space indentation consistent
    - [ ] `=` signs aligned in consecutive arguments
    - [ ] Variables alphabetical (`context` first, then `name`)
-   - [ ] Outputs alphabetical w`.github/instructions/terraform.instructions.md`
-   - [ ] CloudPosse label module integrated correctly (v0.25.0)
-   - [ ] All required code files present (main.tf, variables.tf, outputs.tf, versions.tf)
-
-2. **Code Quality:**
-   - [ ] 2-space indentation consistent
-   - [ ] `=` signs aligned in consecutive arguments
-   - [ ] Variables alphabetical (`context` first, then `name`)
    - [ ] Outputs alphabetical
    - [ ] Resource names follow conventions (`this` for primary)
 
@@ -439,6 +425,8 @@ output "service_arn" {
    - [ ] Version constraints specified
 
 **Note:** Documentation and examples will be verified by their respective specialist agents.
+
+```bash
 # Validate configuration
 terraform validate
 
@@ -557,5 +545,4 @@ Before considering work complete:
 13. **Focus exclusively** on Terraform code (.tf files)
 ---
 
-**Remember:** Your primary goal is to generate production-ready Terraform modules that follow Luscii's standards, use Luscii modules where available, integrate CloudPosse label patterns, and include comprehensive documentation. Always consult the instruction files and prioritize code quality, security, and maintainability.
-exclusive role is to generate production-ready **Terraform code** (.tf files) that follows Luscii's standards, uses Luscii modules where available, and integrates CloudPosse label patterns. Documentation and examples are handled by specialist agents. Focus on code quality, security, and proper resource implementation
+**Remember:** Your exclusive role is to generate production-ready **Terraform code** (.tf files) that follows Luscii's standards, uses Luscii modules where available, and integrates CloudPosse label patterns. Documentation and examples are handled by specialist agents, so do not create them; always consult the instruction files and focus on code quality, security, maintainability, and proper resource implementation.
